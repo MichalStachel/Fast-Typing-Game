@@ -2,37 +2,87 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.center {
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  font-size: 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ul {
+  padding: 0;
+}
+ul li {
+  list-style-type: none;
+padding: 5px 0;
 }
 
-.App-link {
-  color: #61dafb;
+ul li button:focus{
+  border-color: red;
+  border-width: 5px;
+}
+ul li button:focus:hover{
+  background-color: #48486a;
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.textLeft {
+text-align: start;
+font-weight: bold;
+font-size:1.8rem;
+width: 60vh;
+}
+
+#writtenText {
+  color: blue;
+  position: absolute;
+  top:16px;
+}
+
+button {
+  font-size: 2rem;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: #48486a;
+  color: #fff;
+  transition: 0.5s;
+}
+button:hover{
+  background-color: #fff;
+  color: #48486a;
+  transition: 0.5s;
+  border-color: #48486a;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: 4px;
+  font-size: 2rem;
+  box-sizing: border-box;
+  color: gray;
+  text-align: center;
+  outline: transparent;
+  cursor: pointer;
+}
+::-webkit-input-placeholder { 
+  color: peru;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.red {
+  color: rgb(231, 21, 21);
+  font-weight: bold;
 }
