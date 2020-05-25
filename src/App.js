@@ -1,5 +1,8 @@
 import React from "react";
 import "./App.css";
+import Typical from "react-typical";
+import "animate.css/animate.min.css";
+import ScrollAnimation from "react-animate-on-scroll";
 
 class App extends React.Component {
   state = {
@@ -14,15 +17,50 @@ class App extends React.Component {
 
   componentDidMount = () => {
     document.addEventListener("keydown", (e) => {
+      const { text, key, textCopy, writtenText } = this.state;
       this.setState({
         key: e.key,
       });
-      if (this.state.text[0] === e.key) {
-        this.state.text.shift();
+      if (text[0] === e.key) {
+        text.shift();
+        if (this.state.countDown === 60 || this.state.countDown === -1) {
+          let countDown = 60;
+          const countInt = setInterval(() => {
+            --countDown;
+            this.setState({
+              countDown,
+            });
+
+            if (this.state.countDown <= -1) {
+              clearInterval(countInt);
+              this.setState({
+                writtenText: [],
+                text: [],
+                textCopy: [],
+                userWordAmount: 10,
+                key: "",
+                countDown: 60,
+              });
+            } else if (
+              this.state.writtenText.length === this.state.textCopy.length
+            ) {
+              console.log("clear");
+              clearInterval(countInt);
+              this.setState({
+                writtenText: [],
+                text: [],
+                textCopy: [],
+                userWordAmount: 10,
+                key: "",
+                countDown: 60,
+              });
+            }
+          }, 1000);
+        } else return;
       } else if (
-        this.state.text[0] !== e.key &&
-        this.state.text.length !== 0 &&
-        this.state.text.length !== this.state.textCopy.length
+        text[0] !== e.key &&
+        text.length !== 0 &&
+        text.length !== textCopy.length
       ) {
         this.setState({
           mistake: ++this.state.mistake,
@@ -34,6 +72,9 @@ class App extends React.Component {
     const { text, mistake, countDown } = this.state;
     if (this.state.text.length === 1 && this.state.text[0] === this.state.key) {
       this.state.writtenText = [];
+      alert(`You Win!!!
+      Mistakes:${this.state.mistake}
+      Time left:${this.state.countDown}`);
     }
     if (countDown === 0) {
       alert(`You lose :(
@@ -70,26 +111,7 @@ class App extends React.Component {
   };
 
   // Countdown timer
-  countDown = () => {
-    let countDown = 10;
-    const countInt = setInterval(() => {
-      countDown--;
-      this.setState({
-        countDown,
-      });
-
-      if (countDown <= -1) {
-        clearInterval(countInt);
-        this.setState({
-          writtenText: [],
-          text: [],
-          textCopy: [],
-          userWordAmount: 10,
-          key: "",
-        });
-      }
-    }, 1000);
-  };
+  countDown = () => {};
 
   // Clear states
   clear = () => {
@@ -117,58 +139,85 @@ class App extends React.Component {
       });
     }
 
-    console.log(text.length + 1, writtenText.length, textCopy.length);
+    // console.log(text.length + 1, writtenText.length, textCopy.length);
   };
 
   render() {
-    const optionsArr = [20, 50, 100];
+    const optionsArr = [10, 25, 50];
     const { text, mistake, key, writtenText, countDown } = this.state;
     return (
       <div onChange={this.addLetter} className="center">
-        <div className="App">
-          <p className="textLeft"> {text}</p>
-          <p className="textLeft" id="writtenText">
-            {writtenText}
+        {text.length === 0 || (text.length === 1 && text[0] === key) ? (
+          <p id="title">
+            <Typical
+              loop={Infinity}
+              wrapper="b"
+              steps={["Typing game ...", 3000]}
+            />
           </p>
+        ) : null}
+
+        <div className="App">
+          {text != 0 ? (
+            <div>
+              <p className="textLeft" id="text">
+                {" "}
+                {text}
+              </p>
+              <p className="textLeft" id="writtenText">
+                {writtenText}
+              </p>
+            </div>
+          ) : null}
+
           <div>
             {text.length === 0 || (text.length === 1 && text[0] === key) ? (
-              <button onClick={this.addText}>Start</button>
+              <button onClick={this.addText} id="start">
+                Start
+              </button>
             ) : null}
           </div>
           {text.length === 0 ? (
-            <ul>
-              {optionsArr.map((item) => (
-                <li>
-                  <button
-                    onClick={() => {
-                      this.setState({ userWordAmount: item });
-                    }}
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <>
+              <span>Pick amount of words to write on 60 seconds</span>
+              <ul>
+                {optionsArr.map((item) => (
+                  <ScrollAnimation animateIn="fadeIn">
+                    <li>
+                      <button
+                        onClick={() => {
+                          this.setState({ userWordAmount: item });
+                        }}
+                      >
+                        {item}
+                      </button>
+                    </li>
+                  </ScrollAnimation>
+                ))}
+              </ul>
+            </>
           ) : null}
-          {text.length !== 0 ? (
-            <p>
-              Mistakes: <span className="red">{mistake}</span>
-            </p>
-          ) : null}
+          <div className="mistake">
+            {text.length !== 0 ? (
+              <p>
+                Mistakes: <span className="red">{mistake}</span>
+              </p>
+            ) : null}
 
-          {text.length !== 0 ? (
-            <p>
-              {countDown}
-              <input
-                type="text"
-                placeholder="Click HERE and start writing"
-                onClick={this.countDown}
-                onChange={this.clear}
-                id="myTextArea"
-                spellCheck="false"
-              />
-            </p>
-          ) : null}
+            {text.length !== 0 ? (
+              <p>
+                {countDown}
+                <input
+                  type="text"
+                  placeholder="Click HERE and start writing"
+                  onClick={this.countDown}
+                  onChange={this.clear}
+                  id="myTextArea"
+                  spellCheck="false"
+                />
+              </p>
+            ) : null}
+          </div>
         </div>
       </div>
     );

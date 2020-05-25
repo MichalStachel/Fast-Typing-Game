@@ -1,5 +1,13 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .center {
@@ -12,7 +20,21 @@
 
 }
 
+#title {
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 5px;
+  font-weight: bold;
+  transform: translateY(-100%);
+}
+#start {
+  background-color:#47d147 ;
+}
 p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+span {
   font-size: 1.5rem;
 }
 
@@ -25,40 +47,59 @@ padding: 5px 0;
 }
 
 ul li button:focus{
-  border-color: red;
-  border-width: 5px;
+  border-color: #ff6830;
+  border-width: 6px;
 }
 ul li button:focus:hover{
-  background-color: #48486a;
+  background-color: peru;
   color: #fff;
 }
 
 .textLeft {
-text-align: start;
+text-align:start;
 font-weight: bold;
 font-size:1.8rem;
-width: 60vh;
-}
 
+}
+#text {
+
+
+position: absolute;
+top: -100%;
+left:-10%;
+width: 70vh;
+  z-index: 0;
+}
 #writtenText {
   color: blue;
+  top: -100%;
+  left:-10%;
+  width: 70vh;
+
   position: absolute;
-  top:16px;
+  z-index: 1;
 }
 
+.mistake {
+  transform: translateY(150%);
+}
 button {
+  margin: 5px 0;
+  width: 25%;
   font-size: 2rem;
   padding: 5px 20px;
-  border-radius: 5px;
-  background-color: #48486a;
+  border-radius: 10px;
+  border-width: 3px;
+  background-color: peru;
   color: #fff;
   transition: 0.5s;
+  z-index: 1000;
 }
 button:hover{
-  background-color: #fff;
+  background-color: #a4fc28;
   color: #48486a;
   transition: 0.5s;
-  border-color: #48486a;
+  border-color: #a4fc28
 }
 
 input[type=text], select {
@@ -71,7 +112,7 @@ input[type=text], select {
   border-radius: 4px;
   font-size: 2rem;
   box-sizing: border-box;
-  color: gray;
+  color: transparent;
   text-align: center;
   outline: transparent;
   cursor: pointer;
