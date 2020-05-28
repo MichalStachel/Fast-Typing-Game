@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Fast-Typing-Game/static/css/main.8390f07f.chunk.css",
-    "main.js": "/Fast-Typing-Game/static/js/main.ca565134.chunk.js",
-    "main.js.map": "/Fast-Typing-Game/static/js/main.ca565134.chunk.js.map",
+    "main.css": "/Fast-Typing-Game/static/css/main.573ed874.chunk.css",
+    "main.js": "/Fast-Typing-Game/static/js/main.aa6e8591.chunk.js",
+    "main.js.map": "/Fast-Typing-Game/static/js/main.aa6e8591.chunk.js.map",
     "runtime-main.js": "/Fast-Typing-Game/static/js/runtime-main.169ae754.js",
     "runtime-main.js.map": "/Fast-Typing-Game/static/js/runtime-main.169ae754.js.map",
     "static/css/2.f01c5455.chunk.css": "/Fast-Typing-Game/static/css/2.f01c5455.chunk.css",
-    "static/js/2.d137e88f.chunk.js": "/Fast-Typing-Game/static/js/2.d137e88f.chunk.js",
-    "static/js/2.d137e88f.chunk.js.map": "/Fast-Typing-Game/static/js/2.d137e88f.chunk.js.map",
+    "static/js/2.47e2f826.chunk.js": "/Fast-Typing-Game/static/js/2.47e2f826.chunk.js",
+    "static/js/2.47e2f826.chunk.js.map": "/Fast-Typing-Game/static/js/2.47e2f826.chunk.js.map",
     "index.html": "/Fast-Typing-Game/index.html",
-    "precache-manifest.5b3bf20ee9c71bc18e0e816b02bbab66.js": "/Fast-Typing-Game/precache-manifest.5b3bf20ee9c71bc18e0e816b02bbab66.js",
+    "precache-manifest.f71e68eaacb5980e3a67cc36368ccaab.js": "/Fast-Typing-Game/precache-manifest.f71e68eaacb5980e3a67cc36368ccaab.js",
     "service-worker.js": "/Fast-Typing-Game/service-worker.js",
     "static/css/2.f01c5455.chunk.css.map": "/Fast-Typing-Game/static/css/2.f01c5455.chunk.css.map",
-    "static/css/main.8390f07f.chunk.css.map": "/Fast-Typing-Game/static/css/main.8390f07f.chunk.css.map",
-    "static/js/2.d137e88f.chunk.js.LICENSE.txt": "/Fast-Typing-Game/static/js/2.d137e88f.chunk.js.LICENSE.txt"
+    "static/css/main.573ed874.chunk.css.map": "/Fast-Typing-Game/static/css/main.573ed874.chunk.css.map",
+    "static/js/2.47e2f826.chunk.js.LICENSE.txt": "/Fast-Typing-Game/static/js/2.47e2f826.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.169ae754.js",
     "static/css/2.f01c5455.chunk.css",
-    "static/js/2.d137e88f.chunk.js",
-    "static/css/main.8390f07f.chunk.css",
-    "static/js/main.ca565134.chunk.js"
+    "static/js/2.47e2f826.chunk.js",
+    "static/css/main.573ed874.chunk.css",
+    "static/js/main.aa6e8591.chunk.js"
   ]
 }
