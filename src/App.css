@@ -61,9 +61,13 @@ font-weight: bold;
 font-size:1.8rem;
 
 }
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #text {
-
-
 position: absolute;
 top: -100%;
 left:-10%;
@@ -85,9 +89,9 @@ width: 70vh;
 }
 button {
   margin: 5px 0;
-  width: 25%;
+  min-width: 25%;
   font-size: 2rem;
-  padding: 5px 20px;
+  padding: 2px 15px;
   border-radius: 10px;
   border-width: 3px;
   background-color: peru;

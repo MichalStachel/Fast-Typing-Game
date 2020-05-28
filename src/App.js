@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import Typical from "react-typical";
 import "animate.css/animate.min.css";
-import ScrollAnimation from "react-animate-on-scroll";
 
 class App extends React.Component {
   state = {
@@ -13,6 +12,7 @@ class App extends React.Component {
     mistake: 0,
     countDown: 60,
     userWordAmount: 10,
+    btnSett: true,
   };
 
   componentDidMount = () => {
@@ -138,13 +138,15 @@ class App extends React.Component {
         writtenText: arr,
       });
     }
+  };
 
-    // console.log(text.length + 1, writtenText.length, textCopy.length);
+  handleFlag = () => {
+    this.setState({ btnSett: !this.state.btnSett });
   };
 
   render() {
     const optionsArr = [10, 25, 50];
-    const { text, mistake, key, writtenText, countDown } = this.state;
+    const { text, mistake, key, writtenText, countDown, textCopy } = this.state;
     return (
       <div onChange={this.addLetter} className="center">
         {text.length === 0 || (text.length === 1 && text[0] === key) ? (
@@ -161,20 +163,25 @@ class App extends React.Component {
           {text != 0 ? (
             <div>
               <p className="textLeft" id="text">
-                {" "}
-                {text}
+                {this.state.btnSett ? textCopy : text}
               </p>
               <p className="textLeft" id="writtenText">
-                {writtenText}
+                {this.state.btnSett ? writtenText : null}
               </p>
             </div>
           ) : null}
 
           <div>
             {text.length === 0 || (text.length === 1 && text[0] === key) ? (
-              <button onClick={this.addText} id="start">
-                Start
-              </button>
+              <div className="row">
+                <button onClick={this.addText} id="start">
+                  Start
+                </button>
+                PlayStyle:
+                <button onClick={this.handleFlag}>
+                  {this.state.btnSett ? "Overwrite" : "Deleting"}
+                </button>
+              </div>
             ) : null}
           </div>
           {text.length === 0 ? (
@@ -182,17 +189,15 @@ class App extends React.Component {
               <span>Pick amount of words to write on 60 seconds</span>
               <ul>
                 {optionsArr.map((item) => (
-                  <ScrollAnimation animateIn="fadeIn">
-                    <li>
-                      <button
-                        onClick={() => {
-                          this.setState({ userWordAmount: item });
-                        }}
-                      >
-                        {item}
-                      </button>
-                    </li>
-                  </ScrollAnimation>
+                  <li>
+                    <button
+                      onClick={() => {
+                        this.setState({ userWordAmount: item });
+                      }}
+                    >
+                      {item}
+                    </button>
+                  </li>
                 ))}
               </ul>
             </>
@@ -212,6 +217,7 @@ class App extends React.Component {
                   placeholder="Click HERE and start writing"
                   onClick={this.countDown}
                   onChange={this.clear}
+                  onfocus="javascript:this.value=''"
                   id="myTextArea"
                   spellCheck="false"
                 />
